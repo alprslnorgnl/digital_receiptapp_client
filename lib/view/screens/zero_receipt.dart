@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:receipt_app/view/components/navigateBar.dart';
 
 import '../components/appbar.dart';
-import 'addReceipt.dart';
+import '../components/navigate_bar.dart';
+import 'add_receipt.dart';
 
 class ZeroReceipt extends StatefulWidget {
   const ZeroReceipt({super.key});

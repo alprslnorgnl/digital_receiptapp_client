@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:receipt_app/constants/colors.dart';
-import 'package:receipt_app/view/components/googleWith.dart';
-import 'package:receipt_app/view/screens/createAccountOtp.dart';
 
-import '../../controller/signupController.dart';
+import '../../constants/colors.dart';
+import '../../controller/signup_controller.dart';
+import '../components/google_with.dart';
+import 'create_account_otp.dart';
 import 'login.dart';
 
 class Signup extends StatefulWidget {

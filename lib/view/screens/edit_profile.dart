@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../controller/userProfileController.dart';
-import '../../model/userProfileModel.dart';
-import '../components/appbarWithArrow.dart';
 import 'package:intl/intl.dart';
+
+import '../../controller/user_profile_controller.dart';
+import '../../model/user_profile_model.dart';
+import '../components/appbar_with_arrow.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});

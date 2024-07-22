@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:receipt_app/view/screens/login.dart';
 
 import '../components/success.dart';
+import 'login.dart';
 
 class SuccessCreateAccount extends StatefulWidget {
   const SuccessCreateAccount({super.key});

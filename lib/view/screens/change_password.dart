@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
-import 'package:receipt_app/view/components/appbarWithArrow.dart';
-import 'package:receipt_app/view/screens/successPasswordChangeSettings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
 import '../../constants/colors.dart';
+import '../components/appbar_with_arrow.dart';
+import 'success_password_change_settings.dart';
 
 class ChangePassword extends StatefulWidget {
   const ChangePassword({super.key});

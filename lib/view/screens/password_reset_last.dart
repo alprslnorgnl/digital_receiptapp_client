@@ -6,7 +6,7 @@ import 'package:hexcolor/hexcolor.dart';
 import '../../constants/colors.dart';
 import 'package:http/http.dart' as http;
 
-import 'successPasswordChange.dart';
+import 'success_password_change.dart';
 
 class PasswordResetLast extends StatefulWidget {
   const PasswordResetLast({super.key, required this.emailOrPhone});

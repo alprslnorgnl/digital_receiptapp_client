@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:receipt_app/view/components/otpInput.dart';
 
 import '../../constants/colors.dart';
 import 'package:http/http.dart' as http;
 
-import 'successCreateAccount.dart';
+import '../components/otp_input.dart';
+import 'success_create_account.dart';
 
 class CreateAccountOtp extends StatefulWidget {
   const CreateAccountOtp(

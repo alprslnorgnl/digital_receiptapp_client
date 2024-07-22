@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:receipt_app/view/components/appbarWithArrow.dart';
-import 'package:receipt_app/view/components/checkReceiptPiece.dart';
+
+import '../components/appbar_with_arrow.dart';
+import '../components/check_receipt_piece.dart';
 
 class ZeroFavorite extends StatefulWidget {
   const ZeroFavorite({super.key});

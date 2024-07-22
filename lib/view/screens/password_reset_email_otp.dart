@@ -2,12 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:receipt_app/view/screens/passwordResetEmail.dart';
 
 import '../../constants/colors.dart';
-import '../components/otpInput.dart';
 import 'package:http/http.dart' as http;
-import 'passwordResetLast.dart';
+
+import '../components/otp_input.dart';
+import 'password_reset_email.dart';
+import 'password_reset_last.dart';
 
 class PasswordResetEmailOtp extends StatefulWidget {
   const PasswordResetEmailOtp({super.key, required this.email});

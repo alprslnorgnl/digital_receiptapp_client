@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:receipt_app/constants/colors.dart';
-import 'package:receipt_app/view/screens/ReceiptDetail.dart';
-import '../../model/ReceiptModel.dart';
-import '../../services/DateTimeUtil.dart';
-import '../../services/ReceiptService.dart';
+import '../../constants/colors.dart';
+import '../../model/receipt_model.dart';
+import '../../services/date_time_util.dart';
+import '../../services/receipt_service.dart';
 import '../components/appbar.dart';
+import 'receipt_detail.dart';
 
 class SeeFavoriteData extends StatefulWidget {
   const SeeFavoriteData({super.key});

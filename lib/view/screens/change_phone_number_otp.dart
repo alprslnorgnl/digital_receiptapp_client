@@ -2,13 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:receipt_app/view/components/otpInput.dart';
-import 'package:receipt_app/view/screens/changePhoneNumber.dart';
 
 import '../../constants/colors.dart';
 import 'package:http/http.dart' as http;
 
-import 'successPhoneChange.dart';
+import '../components/otp_input.dart';
+import 'change_phone_number.dart';
+import 'success_phone_change.dart';
 
 class ChangePhoneNumberOtp extends StatefulWidget {
   const ChangePhoneNumberOtp(

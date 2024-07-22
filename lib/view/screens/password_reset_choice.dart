@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:receipt_app/constants/colors.dart';
-import 'package:receipt_app/view/screens/passwordResetEmail.dart';
-import 'package:receipt_app/view/screens/passwordResetPhone.dart';
 
+import '../../constants/colors.dart';
 import 'login.dart';
+import 'password_reset_email.dart';
+import 'password_reset_phone.dart';
 
 class PasswordResetChoice extends StatelessWidget {
   const PasswordResetChoice({super.key});

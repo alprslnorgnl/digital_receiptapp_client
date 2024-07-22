@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:receipt_app/view/components/checkReceiptPiece.dart';
-
-import '../screens/ReceiptAnalysis.dart';
-import '../screens/addReceipt.dart';
+import '../screens/add_receipt.dart';
+import '../screens/receipt_analysis.dart';
 import '../screens/settings.dart';
+import 'check_receipt_piece.dart';
 
 class NavigateBar extends StatefulWidget {
   const NavigateBar({super.key, required this.page});

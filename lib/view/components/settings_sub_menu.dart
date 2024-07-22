@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:receipt_app/constants/colors.dart';
+
+import '../../constants/colors.dart';
 
 class SubMenu extends StatelessWidget {
   const SubMenu({super.key, required this.text, required this.bildirim});

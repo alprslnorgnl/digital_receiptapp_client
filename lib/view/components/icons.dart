@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../model/Receipt_model.dart';
+import '../../model/receipt_model.dart';
 
 class RowIcons extends StatefulWidget {
   const RowIcons({

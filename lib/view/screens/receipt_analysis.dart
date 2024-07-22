@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:receipt_app/services/GptService.dart';
 
+import '../../services/gpt_service.dart';
 import '../components/appbar.dart';
-import '../components/navigateBar.dart';
+import '../components/navigate_bar.dart';
 
 class ReceiptAnalysis extends StatefulWidget {
   const ReceiptAnalysis({super.key});

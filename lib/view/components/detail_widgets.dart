@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import '../../model/Receipt_model.dart';
+import '../../model/receipt_model.dart';
 
 Widget buildDetailItem(String title, String value) {
   return Padding(

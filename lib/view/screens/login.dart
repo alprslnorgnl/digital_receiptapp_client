@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:receipt_app/constants/colors.dart';
-import 'package:receipt_app/controller/loginController.dart';
-import 'package:receipt_app/view/components/checkReceiptPiece.dart';
-import 'package:receipt_app/view/screens/changePhoneNumber.dart';
-import 'package:receipt_app/view/screens/passwordResetChoice.dart';
-import 'package:receipt_app/view/screens/signup.dart';
 
-import '../components/googleWith.dart';
+import '../../constants/colors.dart';
+import '../../controller/login_controller.dart';
+import '../components/check_receipt_piece.dart';
+import '../components/google_with.dart';
+import 'change_phone_number.dart';
+import 'password_reset_choice.dart';
+import 'signup.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});

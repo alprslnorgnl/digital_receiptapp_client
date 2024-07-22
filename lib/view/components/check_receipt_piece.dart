@@ -4,8 +4,8 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../screens/login.dart';
-import '../screens/seeReceiptData.dart';
-import '../screens/zeroReceipt.dart';
+import '../screens/see_receipt_data.dart';
+import '../screens/zero_receipt.dart';
 
 class CheckReceiptPiece extends StatefulWidget {
   const CheckReceiptPiece({super.key});

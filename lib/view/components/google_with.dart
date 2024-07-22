@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:receipt_app/view/components/checkReceiptPiece.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../constants/colors.dart';
+import 'check_receipt_piece.dart';
 import 'google_api.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_svg/svg.dart';

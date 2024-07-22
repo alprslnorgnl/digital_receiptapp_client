@@ -7,7 +7,7 @@ import '../../constants/colors.dart';
 import 'login.dart';
 import 'package:http/http.dart' as http;
 
-import 'passwordResetEmailOtp.dart';
+import 'password_reset_email_otp.dart';
 
 class PasswordResetEmail extends StatefulWidget {
   const PasswordResetEmail({super.key});

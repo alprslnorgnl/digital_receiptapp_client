@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
-import 'package:receipt_app/view/components/appbarWithArrow.dart';
-import 'package:receipt_app/view/screens/changePhoneSettingsOtp.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
 import '../../constants/colors.dart';
+import '../components/appbar_with_arrow.dart';
+import 'change_phone_settings_otp.dart';
 
 class ChangePhoneSettings extends StatefulWidget {
   const ChangePhoneSettings({super.key});

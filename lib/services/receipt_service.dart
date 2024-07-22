@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../model/Receipt_model.dart';
+import '../model/receipt_model.dart';
 
 class ReceiptService {
   final String _baseUrl = 'http://35.202.100.38:8080/api/Receipt';

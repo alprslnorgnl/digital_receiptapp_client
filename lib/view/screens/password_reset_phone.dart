@@ -7,7 +7,7 @@ import '../../constants/colors.dart';
 import 'login.dart';
 import 'package:http/http.dart' as http;
 
-import 'passwordResetPhoneOtp.dart';
+import 'password_reset_phone_otp.dart';
 
 class PasswordResetPhone extends StatefulWidget {
   const PasswordResetPhone({super.key});

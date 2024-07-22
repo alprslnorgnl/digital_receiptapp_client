@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import '../../constants/colors.dart';
-import 'changePhoneNumberOtp.dart';
+import 'change_phone_number_otp.dart';
 import 'login.dart';
 import 'package:http/http.dart' as http;
 

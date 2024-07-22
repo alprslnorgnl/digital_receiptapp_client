@@ -4,8 +4,8 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../screens/login.dart';
-import '../screens/seeFavoriteData.dart';
-import '../screens/zeroFavorite.dart';
+import '../screens/see_favorite_data.dart';
+import '../screens/zero_favorite.dart';
 
 class CheckFavoritePiece extends StatefulWidget {
   const CheckFavoritePiece({super.key});

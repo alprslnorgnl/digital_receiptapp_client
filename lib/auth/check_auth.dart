@@ -4,9 +4,10 @@
 //eğer kayıtlıysa --> CheckReceiptPiece sayfasına yönlendirilir
 
 import 'package:flutter/material.dart';
-import 'package:receipt_app/view/components/checkReceiptPiece.dart';
-import 'package:receipt_app/view/screens/welcome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../view/components/check_receipt_piece.dart';
+import '../view/screens/welcome.dart';
 
 class CheckAuth extends StatefulWidget {
   const CheckAuth({super.key});

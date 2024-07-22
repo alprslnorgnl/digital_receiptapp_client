@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:receipt_app/view/components/checkReceiptPiece.dart';
 
+import '../components/check_receipt_piece.dart';
 import '../components/success.dart';
 
 class SuccessPhoneChangeSettings extends StatefulWidget {

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:receipt_app/view/components/checkFavoritePiece.dart';
-import 'package:receipt_app/view/components/settingsMenu.dart';
-import 'package:receipt_app/view/components/settingsSubMenu.dart';
-import 'package:receipt_app/view/screens/changePassword.dart';
-import 'package:receipt_app/view/screens/editProfile.dart';
 
 import '../../auth/check_auth.dart';
 import '../components/appbar.dart';
-import '../components/navigateBar.dart';
-import 'changePhoneSettings.dart';
 import 'package:http/http.dart' as http;
+
+import '../components/check_favorite_piece.dart';
+import '../components/navigate_bar.dart';
+import '../components/settings_menu.dart';
+import '../components/settings_sub_menu.dart';
+import 'change_password.dart';
+import 'change_phone_settings.dart';
+import 'edit_profile.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});

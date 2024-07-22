@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:receipt_app/constants/colors.dart';
+import '../../constants/colors.dart';
+import '../../services/ocr_service.dart';
+import '../../services/qr_service.dart';
 import '../components/appbar.dart';
-import '../components/navigateBar.dart';
-import '../../services/OcrService.dart';
-import '../../services/QrService.dart';
-import '../components/ocResultDiaolog.dart';
+import '../components/navigate_bar.dart';
+import '../components/ocr_result_dialog.dart';
 
 class AddReceipt extends StatefulWidget {
   const AddReceipt({super.key});

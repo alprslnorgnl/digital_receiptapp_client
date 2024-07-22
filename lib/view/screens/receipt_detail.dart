@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:receipt_app/model/ReceiptModel.dart';
-import 'package:receipt_app/view/components/appbarWithArrow.dart';
-import 'package:receipt_app/view/components/icons.dart';
-import 'package:receipt_app/view/components/painter.dart';
-import 'package:receipt_app/view/components/detail_widgets.dart';
 import 'package:share/share.dart';
-import '../../services/DateTimeUtil.dart';
-import '../../services/ReceiptService.dart';
-import 'SeeReceiptData.dart'; // SeeReceiptData sayfasını import ediyoruz
+
+import '../../model/receipt_model.dart';
+import '../../services/date_time_util.dart';
+import '../../services/receipt_service.dart';
+import '../components/appbar_with_arrow.dart';
+import '../components/detail_widgets.dart';
+import '../components/icons.dart';
+import '../components/painter.dart';
+import 'see_receipt_data.dart';
 
 class ReceiptDetail extends StatefulWidget {
   const ReceiptDetail(

@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
-import 'package:receipt_app/view/components/otpInput.dart';
-import 'package:receipt_app/view/screens/passwordResetPhone.dart';
 
 import '../../constants/colors.dart';
-import 'passwordResetLast.dart';
+import '../components/otp_input.dart';
+import 'password_reset_last.dart';
+import 'password_reset_phone.dart';
 
 class PasswordResetPhoneOtp extends StatefulWidget {
   const PasswordResetPhoneOtp({super.key, required this.phone});
