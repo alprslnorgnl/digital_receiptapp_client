@@ -25,8 +25,7 @@ class _ChangePasswordState extends State<ChangePassword> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('jwt_token') ?? '';
 
-    final url =
-        Uri.parse('http://35.202.100.38:8080/api/BaseUser/changePassword');
+    final url = Uri.parse('http://10.0.2.2:5109/api/BaseUser/changePassword');
     final response = await http.post(
       url,
       headers: {
@@ -53,48 +52,65 @@ class _ChangePasswordState extends State<ChangePassword> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const AppbarWithArrow(
-                appbarText: "ŞİFRE DEĞİŞTİR", detailPage: true),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Column(
-                children: [
-                  const SizedBox(height: 60),
-                  Text(
-                    "ŞİFRENİ DEĞİŞTİR",
-                    style: TextStyle(
-                      fontFamily: "MontserratExtraBold",
-                      fontSize: 30.0,
-                      color: HexColor(fontColor1),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        "Şifrenizi değiştirmek için aşağıdaki kutucuğa yeni şifrenizi giriniz",
-                        style: TextStyle(
-                          fontFamily: "MontserratLight",
-                          fontSize: 16.0,
-                          color: HexColor(fontColor1),
-                        ),
-                        textAlign: TextAlign.center,
+    return SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              const AppbarWithArrow(
+                  appbarText: "ŞİFRE DEĞİŞTİR", detailPage: true),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 60),
+                    Text(
+                      "ŞİFRENİ DEĞİŞTİR",
+                      style: TextStyle(
+                        fontFamily: "MontserratExtraBold",
+                        fontSize: 30.0,
+                        color: HexColor(fontColor1),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 30),
-                    child: TextFormField(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Şifrenizi değiştirmek için aşağıdaki kutucuğa yeni şifrenizi giriniz",
+                          style: TextStyle(
+                            fontFamily: "MontserratLight",
+                            fontSize: 16.0,
+                            color: HexColor(fontColor1),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 30),
+                      child: TextFormField(
+                        obscureText: true,
+                        controller: _newPasswordController,
+                        decoration: InputDecoration(
+                          labelText: "Yeni şifreniz",
+                          prefixIcon: const Icon(Icons.lock),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: const BorderSide(
+                              color: Colors.black,
+                              width: 1.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    TextFormField(
                       obscureText: true,
-                      controller: _newPasswordController,
+                      controller: _newPasswordConfirmController,
                       decoration: InputDecoration(
-                        labelText: "Yeni şifreniz",
+                        labelText: "Yeni şifrenizi onaylayınız",
                         prefixIcon: const Icon(Icons.lock),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
@@ -105,42 +121,27 @@ class _ChangePasswordState extends State<ChangePassword> {
                         ),
                       ),
                     ),
-                  ),
-                  TextFormField(
-                    obscureText: true,
-                    controller: _newPasswordConfirmController,
-                    decoration: InputDecoration(
-                      labelText: "Yeni şifrenizi onaylayınız",
-                      prefixIcon: const Icon(Icons.lock),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Colors.black,
-                          width: 1.0,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30.0),
+                      child: ElevatedButton(
+                        onPressed: _changePassword,
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: HexColor(buttonColor1)),
+                        child: Text(
+                          "Devam et",
+                          style: TextStyle(
+                            fontFamily: "Montserrat",
+                            fontSize: 18.0,
+                            color: HexColor(fontColor2),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 30.0),
-                    child: ElevatedButton(
-                      onPressed: _changePassword,
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: HexColor(buttonColor1)),
-                      child: Text(
-                        "Devam et",
-                        style: TextStyle(
-                          fontFamily: "Montserrat",
-                          fontSize: 18.0,
-                          color: HexColor(fontColor2),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

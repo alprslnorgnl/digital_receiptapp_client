@@ -28,10 +28,12 @@ class _SuccessCreateAccountState extends State<SuccessCreateAccount> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Success(
-        text1: "Hesabınız başarılı bir şekilde oluşturulmuştur",
-        text2: "Giriş sayfasına yönlendiriliyorsunuz...",
+    return const SafeArea(
+      child: Scaffold(
+        body: Success(
+          text1: "Hesabınız başarılı bir şekilde oluşturulmuştur",
+          text2: "Giriş sayfasına yönlendiriliyorsunuz...",
+        ),
       ),
     );
   }

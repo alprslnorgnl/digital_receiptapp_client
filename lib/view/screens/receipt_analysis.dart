@@ -33,93 +33,95 @@ class _ReceiptAnalysisState extends State<ReceiptAnalysis> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Stack(
-        children: [
-          Column(
-            children: [
-              const Appbar(appbarText: "FİŞ ANALİZ"),
-              if (_isLoading)
-                const CircularProgressIndicator()
-              else if (_response.isEmpty) ...[
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 30),
-                  child: Image.asset(
-                    "lib/assets/images/logo.png",
-                    width: 100,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 20.0),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: const Text(
-                      "Nasıl yardımcı olabiliriz?",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: "Montserrat",
-                        fontSize: 24.0,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: const Text(
-                    "Örneğin \"En çok alışveriş yaptığım market neresidir?\" diye sorabilirsiniz",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: "MontserratRegular",
-                      fontSize: 16.0,
-                    ),
-                  ),
-                ),
-              ] else
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                  child: Text(
-                    _response,
-                    style: const TextStyle(
-                      fontFamily: "MontserratRegular",
-                      fontSize: 16.0,
-                    ),
-                  ),
-                ),
-              const Spacer(),
-            ],
-          ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Column(
+    return SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Stack(
+          children: [
+            Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                  child: TextField(
-                    controller: _inputController,
-                    decoration: InputDecoration(
-                      suffixIcon: IconButton(
-                        icon: const Icon(Icons.send),
-                        onPressed: _sendPrompt,
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Colors.black,
-                          width: 1.0,
+                const Appbar(appbarText: "FİŞ ANALİZ"),
+                if (_isLoading)
+                  const CircularProgressIndicator()
+                else if (_response.isEmpty) ...[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 30),
+                    child: Image.asset(
+                      "lib/assets/images/logo.png",
+                      width: 100,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20.0),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: const Text(
+                        "Nasıl yardımcı olabiliriz?",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: "Montserrat",
+                          fontSize: 24.0,
                         ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                const NavigateBar(page: 3),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: const Text(
+                      "Örneğin \"En çok alışveriş yaptığım market neresidir?\" diye sorabilirsiniz",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: "MontserratRegular",
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                ] else
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    child: Text(
+                      _response,
+                      style: const TextStyle(
+                        fontFamily: "MontserratRegular",
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                const Spacer(),
               ],
             ),
-          ),
-        ],
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    child: TextField(
+                      controller: _inputController,
+                      decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          icon: const Icon(Icons.send),
+                          onPressed: _sendPrompt,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: const BorderSide(
+                            color: Colors.black,
+                            width: 1.0,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  const NavigateBar(page: 3),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

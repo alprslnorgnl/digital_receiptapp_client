@@ -26,7 +26,7 @@ class _SettingsState extends State<Settings> {
     final token = prefs.getString('jwt_token') ?? '';
 
     final response = await http.delete(
-      Uri.parse('http://35.202.100.38:8080/api/BaseUser/deleteAccount'),
+      Uri.parse('http://10.0.2.2:5109/api/BaseUser/deleteAccount'),
       headers: {
         'Authorization': 'Bearer $token',
       },
@@ -41,6 +41,32 @@ class _SettingsState extends State<Settings> {
     } else {
       // Handle error
       print('Failed to delete account: ${response.body}');
+    }
+  }
+
+  Future<void> _logout() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('jwt_token') ?? '';
+
+    // Call the API to delete the token from the backend
+    final response = await http.post(
+      Uri.parse(
+          'http://10.0.2.2:5109/api/User/logout'), // Replace with the actual endpoint
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      // Remove token from local storage
+      await prefs.remove('jwt_token');
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const CheckAuth()),
+        (Route<dynamic> route) => false,
+      );
+    } else {
+      // Handle error
+      print('Failed to logout: ${response.body}');
     }
   }
 
@@ -73,122 +99,122 @@ class _SettingsState extends State<Settings> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(children: [
-          const Appbar(appbarText: "AYARLAR"),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  const Menu(icon: Icons.person_outline, heading: "Hesap"),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const EditProfile()));
-                    },
-                    child: const SubMenu(
-                      text: "Profili düzenle",
-                      bildirim: false,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const ChangePassword()));
-                    },
-                    child: const SubMenu(
-                      text: "Şifre değiştir",
-                      bildirim: false,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const ChangePhoneSettings()));
-                    },
-                    child: const SubMenu(
-                      text: "Numara değiştir",
-                      bildirim: false,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const CheckFavoritePiece()));
-                    },
-                    child: const SubMenu(
-                      text: "Favoriler",
-                      bildirim: false,
-                    ),
-                  ),
-                  const SubMenu(
-                    text: "Verileri indir",
-                    bildirim: false,
-                  ),
-                  InkWell(
-                    onTap: _showDeleteAccountDialog,
-                    child: const SubMenu(
-                      text: "Hesabını sil",
-                      bildirim: false,
-                    ),
-                  ),
-                  const Menu(
-                      icon: Icons.notifications_outlined, heading: "Bildirim"),
-                  const SubMenu(
-                    text: "Bildirim",
-                    bildirim: true,
-                  ),
-                  const Menu(icon: Icons.more_outlined, heading: "Daha fazla"),
-                  const SubMenu(
-                    text: "Dil",
-                    bildirim: false,
-                  ),
-                  const SubMenu(
-                    text: "Ülke",
-                    bildirim: false,
-                  ),
-                  const SubMenu(
-                    text: "Privacy & Secure",
-                    bildirim: false,
-                  ),
-                  const SizedBox(height: 20),
-                  InkWell(
-                    onTap: () async {
-                      final prefs = await SharedPreferences.getInstance();
-                      await prefs.remove('jwt_token');
-                      Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(
-                            builder: (context) => const CheckAuth()),
-                        (Route<dynamic> route) => false,
-                      );
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 15),
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(10),
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            const Appbar(appbarText: "AYARLAR"),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: Column(
+                    children: [
+                      const Menu(icon: Icons.person_outline, heading: "Hesap"),
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const EditProfile()));
+                        },
+                        child: const SubMenu(
+                          text: "Profili düzenle",
+                          bildirim: false,
+                        ),
                       ),
-                      child: const Center(
-                        child: Text(
-                          "Çıkış Yap",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const ChangePassword()));
+                        },
+                        child: const SubMenu(
+                          text: "Şifre değiştir",
+                          bildirim: false,
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  const ChangePhoneSettings()));
+                        },
+                        child: const SubMenu(
+                          text: "Numara değiştir",
+                          bildirim: false,
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  const CheckFavoritePiece()));
+                        },
+                        child: const SubMenu(
+                          text: "Favoriler",
+                          bildirim: false,
+                        ),
+                      ),
+                      const SubMenu(
+                        text: "Verileri indir",
+                        bildirim: false,
+                      ),
+                      InkWell(
+                        onTap: _showDeleteAccountDialog,
+                        child: const SubMenu(
+                          text: "Hesabını sil",
+                          bildirim: false,
+                        ),
+                      ),
+                      const Menu(
+                          icon: Icons.notifications_outlined,
+                          heading: "Bildirim"),
+                      const SubMenu(
+                        text: "Bildirim",
+                        bildirim: true,
+                      ),
+                      const Menu(
+                          icon: Icons.more_outlined, heading: "Daha fazla"),
+                      const SubMenu(
+                        text: "Dil",
+                        bildirim: false,
+                      ),
+                      const SubMenu(
+                        text: "Ülke",
+                        bildirim: false,
+                      ),
+                      const SubMenu(
+                        text: "Privacy & Secure",
+                        bildirim: false,
+                      ),
+                      const SizedBox(height: 20),
+                      InkWell(
+                        onTap: _logout,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              "Çıkış Yap",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
-          )
-        ]),
+          ],
+        ),
+        bottomNavigationBar: const NavigateBar(page: 4),
       ),
-      bottomNavigationBar: const NavigateBar(page: 4),
     );
   }
 }

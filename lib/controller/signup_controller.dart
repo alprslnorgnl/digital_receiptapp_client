@@ -55,7 +55,7 @@ class SignupController {
   }
 
   Future<String?> signup() async {
-    final url = Uri.parse('http://35.202.100.38:8080/api/User/signup');
+    final url = Uri.parse('http://10.0.2.2:5109/api/User/signup');
     final response = await http.post(
       url,
       headers: <String, String>{

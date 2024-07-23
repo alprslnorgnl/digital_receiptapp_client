@@ -40,14 +40,17 @@ class Success extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            Text(
-              text2,
-              style: TextStyle(
-                fontFamily: "Montserrat",
-                fontSize: 18.0,
-                color: HexColor(fontColor2),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Text(
+                text2,
+                style: TextStyle(
+                  fontFamily: "Montserrat",
+                  fontSize: 18.0,
+                  color: HexColor(fontColor2),
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
             const Spacer(flex: 3),
           ],

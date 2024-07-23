@@ -29,7 +29,7 @@ class _PasswordResetPhoneOtpState extends State<PasswordResetPhoneOtp> {
 
   Future<void> _submitPasswordResetPhoneOtp() async {
     final url = Uri.parse(
-        'http://35.202.100.38:8080/api/User/passwordResetOtpV'); // API endpoint URL
+        'http://10.0.2.2:5109/api/User/passwordResetOtpV'); // API endpoint URL
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
@@ -55,98 +55,102 @@ class _PasswordResetPhoneOtpState extends State<PasswordResetPhoneOtp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
+    return SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
         ),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Spacer(
-            flex: 3,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 30),
-            child: Text(
-              "Telefon doğrulama",
-              style: TextStyle(
-                fontFamily: "Montserrat",
-                fontSize: 18.0,
-                color: HexColor(fontColor3),
-              ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Spacer(
+              flex: 3,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 30),
-            child: Text(
-              "OTP kodunu giriniz",
-              style: TextStyle(
-                fontFamily: "MontserratExtraBold",
-                fontSize: 30.0,
-                color: HexColor(fontColor1),
-              ),
-            ),
-          ),
-          const Spacer(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Text(
-              "${widget.phone} numarasına gönderdiğimiz 6 haneli kodu giriniz",
-              style: const TextStyle(
-                  fontFamily: "MontserratLight", fontSize: 16.0),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          const Spacer(),
-          OtpInput(onCompleted: _onOtpCompleted),
-          const Spacer(),
-          Padding(
-            padding: const EdgeInsets.only(left: 30),
-            child: InkWell(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const PasswordResetPhone()));
-              },
+            Padding(
+              padding: const EdgeInsets.only(left: 30),
               child: Text(
-                "Doğru mail adresini girdiğine emin misin?",
+                "Telefon doğrulama",
                 style: TextStyle(
-                  fontFamily: "MontserratBold",
-                  fontSize: 16,
-                  color: HexColor("2056E1"),
-                  decoration: TextDecoration.underline,
+                  fontFamily: "Montserrat",
+                  fontSize: 18.0,
+                  color: HexColor(fontColor3),
                 ),
               ),
             ),
-          ),
-          const Spacer(),
-          Center(
-            child: ElevatedButton.icon(
-              onPressed:
-                  _submitPasswordResetPhoneOtp, // API'ye OTP kodunu gönder
-              style: ElevatedButton.styleFrom(
-                backgroundColor: HexColor(buttonColor1),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
+            Padding(
+              padding: const EdgeInsets.only(left: 30),
+              child: Text(
+                "OTP kodunu giriniz",
+                style: TextStyle(
+                  fontFamily: "MontserratExtraBold",
+                  fontSize: 30.0,
+                  color: HexColor(fontColor1),
                 ),
               ),
-              icon: const Icon(Icons.send, color: Colors.white), // İkon eklendi
-              label: const Text(
-                "Devam et",
-                style: TextStyle(color: Colors.white),
+            ),
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Text(
+                "${widget.phone} numarasına gönderdiğimiz 6 haneli kodu giriniz",
+                style: const TextStyle(
+                    fontFamily: "MontserratLight", fontSize: 16.0),
+                textAlign: TextAlign.center,
               ),
             ),
-          ),
-          const Spacer(
-            flex: 5,
-          ),
-        ],
+            const Spacer(),
+            OtpInput(onCompleted: _onOtpCompleted),
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const PasswordResetPhone()));
+                },
+                child: Text(
+                  "Doğru telefon numarasını girdiğine emin misiniz?",
+                  style: TextStyle(
+                    fontFamily: "MontserratBold",
+                    fontSize: 16,
+                    color: HexColor("2056E1"),
+                    decoration: TextDecoration.underline,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+            const Spacer(),
+            Center(
+              child: ElevatedButton.icon(
+                onPressed:
+                    _submitPasswordResetPhoneOtp, // API'ye OTP kodunu gönder
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: HexColor(buttonColor1),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                ),
+                icon:
+                    const Icon(Icons.send, color: Colors.white), // İkon eklendi
+                label: const Text(
+                  "Devam et",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+            const Spacer(
+              flex: 5,
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -86,97 +86,100 @@ class _SeeReceiptDataState extends State<SeeReceiptData> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(children: [
-        const Appbar(appbarText: "FİŞ BİLGİLERİ"),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
-          child: TextField(
-            controller: _searchController,
-            decoration: InputDecoration(
-              hintText: "Fiş Ara (gün/ay/yıl)",
-              prefixIcon: const Icon(Icons.search),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
+    return SafeArea(
+      child: Scaffold(
+        body: Column(children: [
+          const Appbar(appbarText: "FİŞ BİLGİLERİ"),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
+            child: TextField(
+              controller: _searchController,
+              decoration: InputDecoration(
+                hintText: "Fiş Ara (gün/ay/yıl)",
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              ),
+              onSubmitted: (value) {
+                _filterReceipts(value);
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Text(
+              "Fiş detaylarını görmek için\nkutucuğa tıklayın",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: "Montserrat",
+                fontSize: 14,
+                color: HexColor(fontColor3),
               ),
             ),
-            onSubmitted: (value) {
-              _filterReceipts(value);
-            },
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 10),
-          child: Text(
-            "Fiş detaylarını görmek için\nkutucuğa tıklayın",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontFamily: "Montserrat",
-              fontSize: 14,
-              color: HexColor(fontColor3),
-            ),
-          ),
-        ),
-        Expanded(
-          child: FutureBuilder<List<ReceiptModel>>(
-            future: _receiptsFuture,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: CircularProgressIndicator());
-              } else if (snapshot.hasError) {
-                return Center(child: Text('Hata: ${snapshot.error}'));
-              } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                return const Center(child: Text('Hiç fiş bulunamadı.'));
-              }
+          Expanded(
+            child: FutureBuilder<List<ReceiptModel>>(
+              future: _receiptsFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Hata: ${snapshot.error}'));
+                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return const Center(child: Text('Hiç fiş bulunamadı.'));
+                }
 
-              return ListView.builder(
-                itemCount: _filteredReceipts.length,
-                itemBuilder: (context, index) {
-                  final receipt = _filteredReceipts[index];
-                  final formattedDateTime = formatDateTime(receipt.dateTime);
-                  final formattedDate = formatDate(receipt.dateTime);
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 24.0, vertical: 10.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: HexColor("B8C0E8"),
-                        borderRadius: BorderRadius.circular(7.5),
-                      ),
-                      child: ListTile(
-                        title: Text(receipt.marketName),
-                        subtitle: Text(
-                            'Tarih: $formattedDateTime\nToplam Ürün: ${receipt.totalQuantity}'),
-                        trailing: IconButton(
-                          icon: receipt.favorite
-                              ? const Icon(Icons.favorite, color: Colors.red)
-                              : const Icon(Icons.favorite_border, color: null),
-                          onPressed: () {
-                            _toggleFavorite(receipt.id);
+                return ListView.builder(
+                  itemCount: _filteredReceipts.length,
+                  itemBuilder: (context, index) {
+                    final receipt = _filteredReceipts[index];
+                    final formattedDateTime = formatDateTime(receipt.dateTime);
+                    final formattedDate = formatDate(receipt.dateTime);
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 24.0, vertical: 10.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: HexColor("B8C0E8"),
+                          borderRadius: BorderRadius.circular(7.5),
+                        ),
+                        child: ListTile(
+                          title: Text(receipt.marketName),
+                          subtitle: Text(
+                              'Tarih: $formattedDateTime\nToplam Ürün: ${receipt.totalQuantity}'),
+                          trailing: IconButton(
+                            icon: receipt.favorite
+                                ? const Icon(Icons.favorite, color: Colors.red)
+                                : const Icon(Icons.favorite_border,
+                                    color: null),
+                            onPressed: () {
+                              _toggleFavorite(receipt.id);
+                            },
+                          ),
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => ReceiptDetail(
+                                  date: formattedDate,
+                                  receipt: receipt,
+                                  allReceipts:
+                                      _allReceipts, // allReceipts parametresini ekledik
+                                ),
+                              ),
+                            );
                           },
                         ),
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => ReceiptDetail(
-                                date: formattedDate,
-                                receipt: receipt,
-                                allReceipts:
-                                    _allReceipts, // allReceipts parametresini ekledik
-                              ),
-                            ),
-                          );
-                        },
                       ),
-                    ),
-                  );
-                },
-              );
-            },
+                    );
+                  },
+                );
+              },
+            ),
           ),
-        ),
-      ]),
-      bottomNavigationBar: const NavigateBar(page: 1),
+        ]),
+        bottomNavigationBar: const NavigateBar(page: 1),
+      ),
     );
   }
 }

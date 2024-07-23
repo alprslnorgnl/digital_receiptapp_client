@@ -30,10 +30,12 @@ class _SuccessPhoneChangeSettingsState
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Success(
-        text1: "Telefon numaranız başarılı bir şekilde değiştirilmiştir",
-        text2: "Ana sayfasına yönlendiriliyorsunuz...",
+    return const SafeArea(
+      child: Scaffold(
+        body: Success(
+          text1: "Telefon numaranız başarılı bir şekilde değiştirilmiştir",
+          text2: "Ana sayfasına yönlendiriliyorsunuz...",
+        ),
       ),
     );
   }

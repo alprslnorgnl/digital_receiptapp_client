@@ -30,10 +30,12 @@ class _SuccessPasswordChangeSettingsState
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Success(
-        text1: "Şifreniz başarılı bir şekilde değiştirilmiştir",
-        text2: "Ana sayfaya yönlendiriliyorsunuz...",
+    return const SafeArea(
+      child: Scaffold(
+        body: Success(
+          text1: "Şifreniz başarılı bir şekilde değiştirilmiştir",
+          text2: "Ana sayfaya yönlendiriliyorsunuz...",
+        ),
       ),
     );
   }

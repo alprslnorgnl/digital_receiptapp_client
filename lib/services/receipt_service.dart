@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../model/receipt_model.dart';
 
 class ReceiptService {
-  final String _baseUrl = 'http://35.202.100.38:8080/api/Receipt';
+  final String _baseUrl = 'http://10.0.2.2:5109/api/Receipt';
 
   Future<List<ReceiptModel>> getReceipts() async {
     final prefs = await SharedPreferences.getInstance();
@@ -97,7 +97,7 @@ class ReceiptService {
     final token = prefs.getString('jwt_token') ?? '';
 
     final response = await http.get(
-      Uri.parse('http://35.202.100.38:8080/api/Receipt/getAllFav'),
+      Uri.parse('http://10.0.2.2:5109/api/Receipt/getAllFav'),
       headers: {
         'Authorization': 'Bearer $token',
       },

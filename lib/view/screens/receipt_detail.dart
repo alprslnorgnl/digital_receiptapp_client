@@ -148,28 +148,28 @@ class _ReceiptDetailState extends State<ReceiptDetail> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          AppbarWithArrow(
-            appbarText: widget.date,
-            detailPage: true,
-          ),
-          CustomPaint(
-            painter: ReceiptPainter(),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(70, 20, 70, 15),
-            child: RowIcons(
-              receipt: receipt,
-              onFavoriteToggle: _toggleFavorite,
-              onDelete: _showDeleteDialog, // Delete fonksiyonunu ekledik
-              onShare: _shareReceipt, // Share fonksiyonunu ekledik
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            AppbarWithArrow(
+              appbarText: widget.date,
+              detailPage: true,
             ),
-          ),
-          SizedBox(
-            height: 360,
-            child: Expanded(
+            CustomPaint(
+              painter: ReceiptPainter(),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(70, 20, 70, 15),
+              child: RowIcons(
+                receipt: receipt,
+                onFavoriteToggle: _toggleFavorite,
+                onDelete: _showDeleteDialog, // Delete fonksiyonunu ekledik
+                onShare: _shareReceipt, // Share fonksiyonunu ekledik
+              ),
+            ),
+            SizedBox(
+              height: 360,
               child: ListView(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 55.0, vertical: 10.0),
@@ -190,25 +190,25 @@ class _ReceiptDetailState extends State<ReceiptDetail> {
                 ],
               ),
             ),
-          ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.arrow_left, size: 36.0),
-                  onPressed: _goToPreviousReceipt,
-                ),
-                const SizedBox(width: 50),
-                IconButton(
-                  icon: const Icon(Icons.arrow_right, size: 36.0),
-                  onPressed: _goToNextReceipt,
-                ),
-              ],
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.arrow_left, size: 36.0),
+                    onPressed: _goToPreviousReceipt,
+                  ),
+                  const SizedBox(width: 50),
+                  IconButton(
+                    icon: const Icon(Icons.arrow_right, size: 36.0),
+                    onPressed: _goToNextReceipt,
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -32,8 +32,7 @@ class _CreateAccountOtpState extends State<CreateAccountOtp> {
 
   Future<void> _submitCreateAccountOtp() async {
     print("submit fonksiyonu içerisi: $_otpCode");
-    final url =
-        Uri.parse('http://35.202.100.38:8080/api/User/createAccountOtpV');
+    final url = Uri.parse('http://10.0.2.2:5109/api/User/createAccountOtpV');
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
@@ -64,77 +63,81 @@ class _CreateAccountOtpState extends State<CreateAccountOtp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
+    return SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
         ),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Spacer(
-            flex: 3,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 30),
-            child: Text(
-              "Telefon doğrulama",
-              style: TextStyle(
-                fontFamily: "Montserrat",
-                fontSize: 18.0,
-                color: HexColor(fontColor3),
-              ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Spacer(
+              flex: 3,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 30),
-            child: Text(
-              "OTP kodunu giriniz",
-              style: TextStyle(
-                fontFamily: "MontserratExtraBold",
-                fontSize: 30.0,
-                color: HexColor(fontColor1),
-              ),
-            ),
-          ),
-          const Spacer(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Text(
-              "${widget.phone} numarasına gönderdiğimiz 6 haneli kodu giriniz",
-              style: const TextStyle(
-                  fontFamily: "MontserratLight", fontSize: 16.0),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          const Spacer(),
-          OtpInput(onCompleted: _onOtpCompleted),
-          const Spacer(),
-          Center(
-            child: ElevatedButton.icon(
-              onPressed: _submitCreateAccountOtp, // API'ye OTP kodunu gönder
-              style: ElevatedButton.styleFrom(
-                backgroundColor: HexColor(buttonColor1),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
+            Padding(
+              padding: const EdgeInsets.only(left: 30),
+              child: Text(
+                "Telefon doğrulama",
+                style: TextStyle(
+                  fontFamily: "Montserrat",
+                  fontSize: 18.0,
+                  color: HexColor(fontColor3),
                 ),
               ),
-              icon: const Icon(Icons.send, color: Colors.white), // İkon eklendi
-              label: const Text(
-                "Devam et",
-                style: TextStyle(color: Colors.white),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 30),
+              child: Text(
+                "OTP kodunu giriniz",
+                style: TextStyle(
+                  fontFamily: "MontserratExtraBold",
+                  fontSize: 30.0,
+                  color: HexColor(fontColor1),
+                ),
               ),
             ),
-          ),
-          const Spacer(
-            flex: 5,
-          ),
-        ],
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Text(
+                "${widget.phone} numarasına gönderdiğimiz 6 haneli kodu giriniz",
+                style: const TextStyle(
+                    fontFamily: "MontserratLight", fontSize: 16.0),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const Spacer(),
+            OtpInput(onCompleted: _onOtpCompleted),
+            const Spacer(),
+            Center(
+              child: ElevatedButton.icon(
+                onPressed: _submitCreateAccountOtp, // API'ye OTP kodunu gönder
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: HexColor(buttonColor1),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                ),
+                icon:
+                    const Icon(Icons.send, color: Colors.white), // İkon eklendi
+                label: const Text(
+                  "Devam et",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+            const Spacer(
+              flex: 5,
+            ),
+          ],
+        ),
       ),
     );
   }

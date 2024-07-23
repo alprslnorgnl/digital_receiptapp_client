@@ -14,49 +14,51 @@ class ZeroReceipt extends StatefulWidget {
 class _ZeroReceiptState extends State<ZeroReceipt> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(children: [
-        const Appbar(appbarText: "FİŞ BİLGİLERİ"),
-        const Spacer(),
-        const Padding(
-          padding: EdgeInsets.only(bottom: 20),
-          child: Text(
-            "Hesabınızda şu ana kadar fiş kaydı bulunmamıştır.",
-            style: TextStyle(
-              fontFamily: "MontserratRegular",
-              fontSize: 20.0,
+    return SafeArea(
+      child: Scaffold(
+        body: Column(children: [
+          const Appbar(appbarText: "FİŞ BİLGİLERİ"),
+          const Spacer(),
+          const Padding(
+            padding: EdgeInsets.only(bottom: 20),
+            child: Text(
+              "Hesabınızda şu ana kadar fiş kaydı bulunmamıştır.",
+              style: TextStyle(
+                fontFamily: "MontserratRegular",
+                fontSize: 20.0,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
           ),
-        ),
-        InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const AddReceipt()),
-            );
-          },
-          child: const Icon(
-            Icons.add_circle_outline,
-            size: 30,
-          ),
-        ),
-        const Padding(
-          padding: EdgeInsets.only(top: 20),
-          child: Text(
-            "İkonuna tıklayarak \"Fiş Ekleme\" sekmesine geçiş yapabilirsiniz",
-            style: TextStyle(
-              fontFamily: "MontserratRegular",
-              fontSize: 20.0,
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AddReceipt()),
+              );
+            },
+            child: const Icon(
+              Icons.add_circle_outline,
+              size: 30,
             ),
-            textAlign: TextAlign.center,
           ),
-        ),
-        const Spacer(
-          flex: 2,
-        )
-      ]),
-      bottomNavigationBar: const NavigateBar(page: 1),
+          const Padding(
+            padding: EdgeInsets.only(top: 20),
+            child: Text(
+              "İkonuna tıklayarak \"Fiş Ekleme\" sekmesine geçiş yapabilirsiniz",
+              style: TextStyle(
+                fontFamily: "MontserratRegular",
+                fontSize: 20.0,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          const Spacer(
+            flex: 2,
+          )
+        ]),
+        bottomNavigationBar: const NavigateBar(page: 1),
+      ),
     );
   }
 }

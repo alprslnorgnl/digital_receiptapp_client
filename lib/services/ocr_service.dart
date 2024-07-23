@@ -5,9 +5,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OcrService {
-  final String _ocrApiUrl = 'http://35.202.100.38:8080/api/Receipt/ocr';
+  final String _ocrApiUrl = 'http://10.0.2.2:5109/api/Receipt/ocr';
   final String _addReceiptApiUrl =
-      'http://35.202.100.38:8080/api/Receipt/addReceipt';
+      'http://10.0.2.2:5109/api/Receipt/addReceipt';
 
   Future<Map<String, dynamic>?> pickImageAndExtractText() async {
     final picker = ImagePicker();

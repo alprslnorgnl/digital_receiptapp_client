@@ -60,102 +60,82 @@ class _SignupState extends State<Signup> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 65.0, left: 30.0, bottom: 30),
-            child: Text(
-              "Hesap oluştur",
-              style: TextStyle(
-                fontFamily: "Montserrat",
-                fontSize: 36.0,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-            child: Text(
-              "Hoşgeldiniz! Lütfen istenen bilgileri giriniz",
-              style: TextStyle(
-                fontFamily: "Montserrat",
-                fontSize: 14.0,
-                color: HexColor(fontColor3),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 30.0),
-            child: Row(
-              children: [
-                Text(
-                  "Zaten hesabınız var mı? ",
-                  style: TextStyle(
-                    fontFamily: "Montserrat",
-                    fontSize: 14.0,
-                    color: HexColor(fontColor3),
-                  ),
+    return SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(top: 65.0, left: 30.0, bottom: 30),
+              child: Text(
+                "Hesap oluştur",
+                style: TextStyle(
+                  fontFamily: "Montserrat",
+                  fontSize: 36.0,
                 ),
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => const Login()));
-                  },
-                  child: Text(
-                    "Giriş yapın",
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              child: Text(
+                "Hoşgeldiniz! Lütfen istenen bilgileri giriniz",
+                style: TextStyle(
+                  fontFamily: "Montserrat",
+                  fontSize: 14.0,
+                  color: HexColor(fontColor3),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 30.0),
+              child: Row(
+                children: [
+                  Text(
+                    "Zaten hesabınız var mı? ",
                     style: TextStyle(
                       fontFamily: "Montserrat",
                       fontSize: 14.0,
-                      color: HexColor(fontColor4),
-                      decoration: TextDecoration.underline,
+                      color: HexColor(fontColor3),
                     ),
                   ),
-                )
-              ],
-            ),
-          ),
-          const Spacer(
-            flex: 2,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  //PhoneNumber
-                  TextFormField(
-                    keyboardType: TextInputType.phone,
-                    controller: _phoneNumberController,
-                    onChanged: (value) {
-                      _signupController.setPhoneNumber(value);
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Login()));
                     },
-                    decoration: InputDecoration(
-                      labelText: "Telefon Numarası",
-                      prefixIcon: const Icon(Icons.phone),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Colors.black,
-                          width: 1.0,
-                        ),
+                    child: Text(
+                      "Giriş yapın",
+                      style: TextStyle(
+                        fontFamily: "Montserrat",
+                        fontSize: 14.0,
+                        color: HexColor(fontColor4),
+                        decoration: TextDecoration.underline,
                       ),
                     ),
-                  ),
-                  //Password
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
-                    child: TextFormField(
-                      obscureText: true,
-                      controller: _passwordController,
+                  )
+                ],
+              ),
+            ),
+            const Spacer(
+              flex: 2,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    //PhoneNumber
+                    TextFormField(
+                      keyboardType: TextInputType.phone,
+                      controller: _phoneNumberController,
                       onChanged: (value) {
-                        _signupController.setPassword(value);
+                        _signupController.setPhoneNumber(value);
                       },
                       decoration: InputDecoration(
-                        labelText: "Şifreniz",
-                        prefixIcon: const Icon(Icons.lock),
+                        labelText: "Telefon Numarası",
+                        prefixIcon: const Icon(Icons.phone),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: const BorderSide(
@@ -165,91 +145,113 @@ class _SignupState extends State<Signup> {
                         ),
                       ),
                     ),
-                  ),
-                  Row(
-                    children: [
-                      Checkbox(
-                        value: isChecked,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            isChecked = value!;
-                            _signupController.setCheckboxValue(value);
-                          });
+                    //Password
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20.0),
+                      child: TextFormField(
+                        obscureText: true,
+                        controller: _passwordController,
+                        onChanged: (value) {
+                          _signupController.setPassword(value);
                         },
-                      ),
-                      InkWell(
-                        onTap: () {
-                          _showKVKK(context);
-                        },
-                        child: Text(
-                          "KVKK metnini",
-                          style: TextStyle(
-                            fontFamily: "Montserrat",
-                            fontSize: 14.0,
-                            color: HexColor(fontColor4),
-                            decoration: TextDecoration.underline,
+                        decoration: InputDecoration(
+                          labelText: "Şifreniz",
+                          prefixIcon: const Icon(Icons.lock),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: const BorderSide(
+                              color: Colors.black,
+                              width: 1.0,
+                            ),
                           ),
                         ),
                       ),
-                      Text(
-                        " okudum, onaylıyorum",
-                        style: TextStyle(
-                          fontFamily: "Montserrat",
-                          fontSize: 14.0,
-                          color: HexColor(fontColor3),
+                    ),
+                    Row(
+                      children: [
+                        Checkbox(
+                          value: isChecked,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              isChecked = value!;
+                              _signupController.setCheckboxValue(value);
+                            });
+                          },
                         ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 30.0),
-                    child: ElevatedButton(
-                      onPressed: () async {
-                        String? result = _signupController.validateFields();
-                        if (result == null) {
-                          String? result2 = await _signupController.signup();
-                          if (result2 != "200") {
-                            showSnackBar(context, result2!);
-                          } else {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => CreateAccountOtp(
-                                  phone: _phoneNumberController.text,
-                                  password: _passwordController.text,
+                        InkWell(
+                          onTap: () {
+                            _showKVKK(context);
+                          },
+                          child: Text(
+                            "KVKK metnini",
+                            style: TextStyle(
+                              fontFamily: "Montserrat",
+                              fontSize: 14.0,
+                              color: HexColor(fontColor4),
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          " okudum, onaylıyorum",
+                          style: TextStyle(
+                            fontFamily: "Montserrat",
+                            fontSize: 14.0,
+                            color: HexColor(fontColor3),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30.0),
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          String? result = _signupController.validateFields();
+                          if (result == null) {
+                            String? result2 = await _signupController.signup();
+                            if (result2 != "200") {
+                              showSnackBar(context, result2!);
+                            } else {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => CreateAccountOtp(
+                                    phone: _phoneNumberController.text,
+                                    password: _passwordController.text,
+                                  ),
                                 ),
-                              ),
-                            );
+                              );
+                            }
+                          } else {
+                            showSnackBar(context, result);
                           }
-                        } else {
-                          showSnackBar(context, result);
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: HexColor(buttonColor1)),
-                      child: Text(
-                        "Kayıt ol",
-                        style: TextStyle(
-                          fontFamily: "Montserrat",
-                          fontSize: 18.0,
-                          color: HexColor(fontColor2),
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: HexColor(buttonColor1)),
+                        child: Text(
+                          "Kayıt ol",
+                          style: TextStyle(
+                            fontFamily: "Montserrat",
+                            fontSize: 18.0,
+                            color: HexColor(fontColor2),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          const Spacer(
-            flex: 2,
-          ),
-          const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.0),
-              child: GoogleWith()),
-          const Spacer(
-            flex: 3,
-          ),
-        ],
+            const Spacer(
+              flex: 2,
+            ),
+            const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30.0),
+                child: GoogleWith()),
+            const Spacer(
+              flex: 3,
+            ),
+          ],
+        ),
       ),
     );
   }

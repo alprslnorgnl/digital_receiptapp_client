@@ -34,7 +34,7 @@ class _CheckReceiptPieceState extends State<CheckReceiptPiece> {
     }
 
     final response = await http.get(
-      Uri.parse('http://35.202.100.38:8080/api/Receipt/count'),
+      Uri.parse('http://10.0.2.2:5109/api/Receipt/count'),
       headers: {
         'Authorization': 'Bearer $token',
       },
@@ -62,9 +62,11 @@ class _CheckReceiptPieceState extends State<CheckReceiptPiece> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
+    return const SafeArea(
+      child: Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }
