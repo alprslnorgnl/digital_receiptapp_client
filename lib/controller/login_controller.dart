@@ -46,7 +46,7 @@ class Logincontroller {
   }
 
   Future<String?> login() async {
-    final url = Uri.parse('http://10.0.2.2:5109/api/User/login');
+    final url = Uri.parse('http://35.202.100.38:8080/api/User/login');
     final response = await http.post(
       url,
       headers: <String, String>{

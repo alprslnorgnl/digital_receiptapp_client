@@ -23,7 +23,7 @@ class _PasswordResetEmailState extends State<PasswordResetEmail> {
   // API Call
   Future<void> _passwordResetEmail(String email) async {
     // API çağrısını yapın.
-    final url = Uri.parse('http://10.0.2.2:5109/api/User/passwordReset');
+    final url = Uri.parse('http://35.202.100.38:8080/api/User/passwordReset');
     final response = await http.post(
       url,
       headers: <String, String>{

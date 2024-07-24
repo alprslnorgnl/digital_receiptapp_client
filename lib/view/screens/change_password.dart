@@ -25,7 +25,8 @@ class _ChangePasswordState extends State<ChangePassword> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('jwt_token') ?? '';
 
-    final url = Uri.parse('http://10.0.2.2:5109/api/BaseUser/changePassword');
+    final url =
+        Uri.parse('http://35.202.100.38:8080/api/BaseUser/changePassword');
     final response = await http.post(
       url,
       headers: {

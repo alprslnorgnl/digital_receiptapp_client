@@ -46,8 +46,6 @@ class _AddReceiptState extends State<AddReceipt> {
       final success = await _ocrService.saveReceipt(_ocrData!);
       Navigator.of(context).pop(); // Close the dialog after save
       if (success) {
-        ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Receipt saved successfully')));
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Failed to save receipt')));

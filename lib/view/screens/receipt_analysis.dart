@@ -28,6 +28,7 @@ class _ReceiptAnalysisState extends State<ReceiptAnalysis> {
     setState(() {
       _response = response;
       _isLoading = false;
+      _inputController.clear(); // TextField içeriğini temizleme
     });
   }
 
@@ -77,17 +78,19 @@ class _ReceiptAnalysisState extends State<ReceiptAnalysis> {
                     ),
                   ),
                 ] else
-                  Padding(
+                  Container(
+                    height: 350,
                     padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                    child: Text(
-                      _response,
-                      style: const TextStyle(
-                        fontFamily: "MontserratRegular",
-                        fontSize: 16.0,
+                    child: SingleChildScrollView(
+                      child: Text(
+                        _response,
+                        style: const TextStyle(
+                          fontFamily: "MontserratRegular",
+                          fontSize: 16.0,
+                        ),
                       ),
                     ),
                   ),
-                const Spacer(),
               ],
             ),
             Positioned(

@@ -6,6 +6,7 @@ import 'package:hexcolor/hexcolor.dart';
 import '../../constants/colors.dart';
 import 'package:http/http.dart' as http;
 
+import 'login.dart';
 import 'success_password_change.dart';
 
 class PasswordResetLast extends StatefulWidget {
@@ -25,7 +26,8 @@ class _PasswordResetLastState extends State<PasswordResetLast> {
   // API Call
   Future<void> _changePassword() async {
     // API çağrısını yapın.
-    final url = Uri.parse('http://10.0.2.2:5109/api/User/passwordResetLast');
+    final url =
+        Uri.parse('http://35.202.100.38:8080/api/User/passwordResetLast');
     final response = await http.post(
       url,
       headers: <String, String>{
@@ -42,7 +44,15 @@ class _PasswordResetLastState extends State<PasswordResetLast> {
       Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => const SuccessPasswordChange()));
     } else {
-      print('change password failed: ${response.body}');
+      var responseBody = json.decode(response.body);
+      var message = responseBody['message'];
+      print('Hata mesajı: $message');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('$message')),
+      );
+
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => const Login()));
     }
   }
 

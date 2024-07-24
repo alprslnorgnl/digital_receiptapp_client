@@ -13,7 +13,7 @@ class UserProfileController {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('jwt_token') ?? '';
     final response = await http.get(
-      Uri.parse('http://10.0.2.2:5109/api/BaseUser/get'),
+      Uri.parse('http://35.202.100.38:8080/api/BaseUser/get'),
       headers: {
         'Authorization': 'Bearer $token',
       },
@@ -57,7 +57,7 @@ class UserProfileController {
     final formattedBirthDate = userProfile.birthDate.toIso8601String();
 
     final response = await http.put(
-      Uri.parse('http://10.0.2.2:5109/api/BaseUser/update'),
+      Uri.parse('http://35.202.100.38:8080/api/BaseUser/update'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',

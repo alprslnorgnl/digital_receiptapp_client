@@ -30,7 +30,7 @@ class _PasswordResetEmailOtpState extends State<PasswordResetEmailOtp> {
 
   Future<void> _submitPasswordResetEmailOtp() async {
     final url = Uri.parse(
-        'http://10.0.2.2:5109/api/User/passwordResetOtpV'); // API endpoint URL
+        'http://35.202.100.38:8080/api/User/passwordResetOtpV'); // API endpoint URL
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},

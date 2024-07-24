@@ -26,9 +26,9 @@ Widget buildProductItem(ProductModel product) {
         borderRadius: BorderRadius.circular(7.5),
       ),
       child: ListTile(
-        title: Text("Product: ${product.productName}"),
+        title: Text("Ürün: ${product.productName}"),
         subtitle: Text(
-            "Quantity: ${product.productPiece}\nKDV Rate: ${product.kdvRate}"),
+            "Adet: ${product.productPiece}\nKDV Oranı: ${product.kdvRate}"),
       ),
     ),
   );

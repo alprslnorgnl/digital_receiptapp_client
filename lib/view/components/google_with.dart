@@ -25,7 +25,7 @@ class _GoogleWithState extends State<GoogleWith> {
       final auth = await user.authentication;
 
       var response = await http.post(
-        Uri.parse('http://10.0.2.2:5109/api/User/googleLogin'),
+        Uri.parse('http://35.202.100.38:8080/api/User/googleLogin'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },

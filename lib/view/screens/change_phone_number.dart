@@ -23,7 +23,7 @@ class _ChangePhoneNumberState extends State<ChangePhoneNumber> {
   // API Call
   Future<void> _changePhone(String oldPhone, String newPhone) async {
     // API çağrısını yapın.
-    final url = Uri.parse('http://10.0.2.2:5109/api/User/changePhone');
+    final url = Uri.parse('http://35.202.100.38:8080/api/User/changePhone');
     final response = await http.post(
       url,
       headers: <String, String>{

@@ -19,11 +19,11 @@ class OcrResultDialog extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Product Name: ${product['productName']}",
+              Text("Ürün: ${product['productName']}",
                   style: const TextStyle(fontSize: 14)),
-              Text("Product Piece: ${product['productPiece']}",
+              Text("Adet: ${product['productPiece']}",
                   style: const TextStyle(fontSize: 14)),
-              Text("KDV Rate: ${product['kdvRate']}",
+              Text("KDV: ${product['kdvRate']}",
                   style: const TextStyle(fontSize: 14)),
             ],
           ),
@@ -37,20 +37,20 @@ class OcrResultDialog extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Market Name: ${data['marketName']}",
+            Text("Market: ${data['marketName']}",
                 style:
                     const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-            Text("Market Branch: ${data['marketBranch']}",
+            Text("Şube: ${data['marketBranch']}",
                 style:
                     const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-            Text("DateTime: ${data['dateTime']}",
+            Text("Tarih: ${data['dateTime']}",
                 style:
                     const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-            Text("Total Quantity: ${data['totalQuantity']}",
+            Text("Toplam Tutar: ${data['totalQuantity']}",
                 style:
                     const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
-            const Text("Products:",
+            const Text("Ürünler:",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -147,7 +147,7 @@ class _SeeFavoriteDataState extends State<SeeFavoriteData> {
                         child: ListTile(
                           title: Text(receipt.marketName),
                           subtitle: Text(
-                              'Tarih: $formattedDateTime\nToplam Ürün: ${receipt.totalQuantity}'),
+                              'Tarih: $formattedDateTime\nToplam Tutar: ${receipt.totalQuantity}'),
                           trailing: IconButton(
                             icon: receipt.favorite
                                 ? const Icon(Icons.favorite, color: Colors.red)

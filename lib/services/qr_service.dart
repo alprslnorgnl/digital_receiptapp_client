@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class QrService {
   final String _addReceiptApiUrl =
-      'http://10.0.2.2:5109/api/Receipt/addReceipt';
+      'http://35.202.100.38:8080/api/Receipt/addReceipt';
 
   Future<void> scanQrCode(BuildContext context) async {
     final qrKey = GlobalKey(debugLabel: 'QR');

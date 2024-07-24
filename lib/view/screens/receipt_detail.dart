@@ -174,15 +174,16 @@ class _ReceiptDetailState extends State<ReceiptDetail> {
                 padding: const EdgeInsets.symmetric(
                     horizontal: 55.0, vertical: 10.0),
                 children: [
-                  buildDetailItem("Market Name", receipt.marketName),
-                  buildDetailItem("Market Branch", receipt.marketBranch),
-                  buildDetailItem("Date", formatDateTime(receipt.dateTime)),
+                  buildDetailItem("Market", receipt.marketName),
+                  buildDetailItem("Şube", receipt.marketBranch),
+                  buildDetailItem("Tarih", formatDateTime(receipt.dateTime)),
                   buildDetailItem(
-                      "Total Quantity", receipt.totalQuantity.toString()),
-                  buildDetailItem("Favorite", receipt.favorite ? "Yes" : "No"),
+                      "Topam Tutar", receipt.totalQuantity.toString()),
+                  buildDetailItem(
+                      "Favori", receipt.favorite ? "Evet" : "Hayır"),
                   const SizedBox(height: 20), // Boşluk eklemek için
                   const Text(
-                    "Products:",
+                    "Ürünler:",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   ...receipt.products

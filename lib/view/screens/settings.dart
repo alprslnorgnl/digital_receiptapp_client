@@ -26,7 +26,7 @@ class _SettingsState extends State<Settings> {
     final token = prefs.getString('jwt_token') ?? '';
 
     final response = await http.delete(
-      Uri.parse('http://10.0.2.2:5109/api/BaseUser/deleteAccount'),
+      Uri.parse('http://35.202.100.38:8080/api/BaseUser/deleteAccount'),
       headers: {
         'Authorization': 'Bearer $token',
       },
@@ -51,7 +51,7 @@ class _SettingsState extends State<Settings> {
     // Call the API to delete the token from the backend
     final response = await http.post(
       Uri.parse(
-          'http://10.0.2.2:5109/api/User/logout'), // Replace with the actual endpoint
+          'http://35.202.100.38:8080/api/User/logout'), // Replace with the actual endpoint
       headers: {
         'Authorization': 'Bearer $token',
       },

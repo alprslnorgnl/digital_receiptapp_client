@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class GptService {
-  final String baseUrl = 'http://10.0.2.2:5109/api/Receipt';
+  final String baseUrl = 'http://35.202.100.38:8080/api/Receipt';
 
   Future<String> sendPrompt(String prompt) async {
     final prefs = await SharedPreferences.getInstance();

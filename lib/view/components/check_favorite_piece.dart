@@ -34,7 +34,7 @@ class _CheckFavoritePieceState extends State<CheckFavoritePiece> {
     }
 
     final response = await http.get(
-      Uri.parse('http://10.0.2.2:5109/api/Receipt/favCount'),
+      Uri.parse('http://35.202.100.38:8080/api/Receipt/favCount'),
       headers: {
         'Authorization': 'Bearer $token',
       },

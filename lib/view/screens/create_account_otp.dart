@@ -32,7 +32,8 @@ class _CreateAccountOtpState extends State<CreateAccountOtp> {
 
   Future<void> _submitCreateAccountOtp() async {
     print("submit fonksiyonu içerisi: $_otpCode");
-    final url = Uri.parse('http://10.0.2.2:5109/api/User/createAccountOtpV');
+    final url =
+        Uri.parse('http://35.202.100.38:8080/api/User/createAccountOtpV');
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},

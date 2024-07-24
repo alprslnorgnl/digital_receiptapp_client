@@ -36,7 +36,7 @@ class _ChangePhoneSettingsOtpState extends State<ChangePhoneSettingsOtp> {
     final token = prefs.getString('jwt_token') ?? '';
 
     final url = Uri.parse(
-        'http://10.0.2.2:5109/api/BaseUser/changePhoneOtpV'); // API endpoint URL
+        'http://35.202.100.38:8080/api/BaseUser/changePhoneOtpV'); // API endpoint URL
     final response = await http.post(
       url,
       headers: {

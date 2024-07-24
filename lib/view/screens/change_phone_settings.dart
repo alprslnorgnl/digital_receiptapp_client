@@ -24,7 +24,7 @@ class _ChangePhoneSettingsState extends State<ChangePhoneSettings> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('jwt_token') ?? '';
 
-    final url = Uri.parse('http://10.0.2.2:5109/api/BaseUser/changePhone');
+    final url = Uri.parse('http://35.202.100.38:8080/api/BaseUser/changePhone');
     final response = await http.post(
       url,
       headers: {
